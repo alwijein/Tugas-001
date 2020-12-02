@@ -1,18 +1,12 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
-#include <sstream>
 #include <bits/stdc++.h>
 
 using namespace std;
 
 string crhomosome [15];
-
-string convertInt(int number){
-    stringstream ss;
-    ss << number;
-    return ss.str();
-}
+int hasil[5];
 
 int konversiDes(int bin)
 {
@@ -31,9 +25,9 @@ int konversiDes(int bin)
 
 void substring(int x){
 
-    int des=0;
 
-	string subSub[4];
+	string subSub[5];
+
 	int a = 0;
 
 	for(int i = 0; i < 5; i++){
@@ -41,38 +35,20 @@ void substring(int x){
 		a = a + 4;
 	}
 
-	int atoiX[4];
+	int atoiX[5];
 	
 	for(int i = 0; i < 5; i++){
     	atoiX[i] = atoi(subSub[i].c_str());
 	}
-	
-	int hasilX[4];
 
 	for(int i = 0; i < 5; i++){
-		hasilX[i] = konversiDes(atoiX[i]);
+		hasil[i] = konversiDes(atoiX[i]);
 	}
 
 	for(int i = 0; i < 5; i++){
-		cout<<hasilX[i];
+		cout<<hasil[i];
 	}
-
-	
-
-
-    
-    
- 
-
-
-    // while(char_array[i]!=0)
-    // {    if(char_array[i]=='0'||char_array[i]=='1')
-    //     {
-    //         des=des*2+char_array[i]-48;
-    //     }i++;
-    // }
-    
-    // cout<<des;
+    cout<<endl;
 }
 
 int main(){
@@ -86,7 +62,11 @@ int main(){
         "selasa, 07:40-09:20","selasa, 13:00-14:40","selasa, 14:40-16:20",
         "rabu, 07:40-09:20","rabu, 13:00-14:40","rabu, 14:40-16:20",
         "kamis, 07:40-09:20","kamis, 13:00-14:40"};
-	
+	string ruangan[11] = {
+        "labrpl","labjarkom","labdasar","labindustri","labmultimedia",
+        "labriset","labrplbaru","ruanglab","labjaringanbaru","labfikom","labrobotika"
+        };
+        
 	int n = 0;
 	char condition;
 	do{	
@@ -97,7 +77,18 @@ int main(){
 		n++;
 	}while(condition!='n');
 
-    int x = 0;
-    substring(x);
+    string cari;
+    cout<<"Masukkan Cari: ";
+    cin>>cari;
     
+    for (int i = 0; i < 15; i++){
+     if (cari == crhomosome[i]){
+         substring(i);
+        cout<<"Kelas    : "<<kelas[hasil[2]]<<endl;         
+        cout<<"Waktu    : "<<waktu[hasil[4]]<<endl;         
+        cout<<"Matkul   : "<<mataKuliah[hasil[0]]<<endl;         
+        cout<<"Dosen    : "<<dosen[hasil[1]]<<endl;         
+        cout<<"Ruangan  : "<<ruangan[hasil[3]]<<endl;         
+     }
+    } 
 }
